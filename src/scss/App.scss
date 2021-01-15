@@ -14,6 +14,7 @@ $backgrd: 'https://st8.cannypic.com/thumbs/38/380787_632_canny_pic.jpg';
   background: -webkit-linear-gradient(top left, #CEDBEE, #4F03CD);
   background: -moz-linear-gradient(top left, #CEDBEE, #4F03CD);
   background: linear-gradient(to bottom right, #CEDBEE, #4F03CD);
+  overflow-y: hidden;
 }
 
 form{
@@ -107,7 +108,7 @@ form{
       margin-bottom: 20px;
     }
   }
-  & .recipe__ingredient{
+  & .recipe__item{
     margin-bottom: 5px;
     &:last-child {margin-bottom: 0;}
     & span {font-weight: bold; margin-right: 5px;}

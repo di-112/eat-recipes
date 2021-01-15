@@ -14,7 +14,7 @@ const App = () => {
   const [query, setQuery] = useState('chicken')
 
   useEffect(()=>{
-    axios.get(`https://api.edamam.com/search?q=${query}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=40&calories=591-722&health=alcohol-free`)
+    axios.get(`https://api.edamam.com/search?q=${query}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=20&calories=591-722&health=alcohol-free`)
     .then(response=>{
       console.log(response)
       setRecipes(response.data.hits.map(hit=>hit.recipe))

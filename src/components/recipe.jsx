@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+const img_not_img = 'https://cdn.pixabay.com/photo/2017/01/25/17/35/picture-2008484_1280.png'
+
 const Recipe = ({recipe}) => {
 
    const [showColories, setShowColories] = useState(false)
@@ -14,7 +16,7 @@ const Recipe = ({recipe}) => {
             {
                showColories && <div className='recipe__composition'>
                   {recipe.digest.map(item => (
-                     <div className='recipe__ingredient' key={item.label}> <span>{item.label}:</span>{item.total.toFixed(1)}</div>)
+                     <div className='recipe__item' key={item.label}> <span>{item.label}:</span>{item.total.toFixed(1)}</div>)
                   )}
                </div>
             }
@@ -22,9 +24,9 @@ const Recipe = ({recipe}) => {
                showIngredients && <div className='recipe__composition'>
                <h2>Ingredients:</h2>
                {recipe.ingredients.map(item => (
-                  <div className='recipe__ingredient'>
-                  <img src={item.image} />
-                  <div key={item.text}> <span>{item.text}, weight:</span>{item.weight.toFixed(1)}</div>
+                  <div className='recipe__item'>
+                  <img src={item.image?item.image:img_not_img}/>
+                  <div key={item.text}> <span>{item.text}, weight:</span>{item.weight.toFixed(1)} gram</div>
                   </div>)
                )}
                </div>
