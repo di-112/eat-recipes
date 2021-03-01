@@ -9,12 +9,27 @@ class RecipesSlider extends React.Component {
    }
    render(){
       const settings = {
-         dots: true,
          infinite: true,
          speed: 0,
          slidesToShow: 3,
          slidesToScroll: 3,
-         waitForAnimate: true
+         waitForAnimate: true,
+         responsive:[
+            {
+               breakpoint: 1400,
+               settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+               }
+            },
+            {
+               breakpoint: 950,
+               settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+               }
+            }
+         ]
       }
       return (
          <Slider className="recipes__slider" {...settings}>  

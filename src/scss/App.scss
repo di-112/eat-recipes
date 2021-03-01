@@ -60,14 +60,13 @@ form{
     width: 80%;
     & .slick-track {
       overflow: hidden;
-      margin-bottom: 40px;
     }
     & .slick-slide{
       display: flex;
       justify-content: center;
-    }
-    & .slick-dots{
-      margin-bottom: 20px;
+      @media (max-width:480px) {
+        transform: scale(0.8);
+      }
     }
     & .slick-arrow{
      position: absolute;
