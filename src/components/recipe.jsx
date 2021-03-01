@@ -1,11 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import notImage from '../img/notImage.jpg'
 
-const img_not_img = 'https://cdn.pixabay.com/photo/2017/01/25/17/35/picture-2008484_1280.png'
 
 const Recipe = ({recipe}) => {
 
    const [showColories, setShowColories] = useState(false)
    const [showIngredients, setShowIngredients] = useState(false)
+
+   useEffect(() => {
+      document.addEventListener('click', handleClickOutside)
+      return () => {
+         document.removeEventListener('click', handleClickOutside)
+      }
+   }, [])
+ 
+   const handleClickOutside= (event) => {
+      const ref = document.querySelector('.slick-list')
+      if (!event.path.includes(ref)) {
+         setShowColories(false)
+         setShowIngredients(false)
+      }
+  }
 
    return (
       <div className='recipe'>
@@ -16,7 +31,7 @@ const Recipe = ({recipe}) => {
             {
                showColories && <div className='recipe__composition'>
                   {recipe.digest.map(item => (
-                     <div className='recipe__item' key={item.label}> <span>{item.label}:</span>{item.total.toFixed(1)}</div>)
+                     <div className='recipe__item' key={item.label}> <span>{item.label}:</span>{item.total.toFixed(1)} col-s</div>)
                   )}
                </div>
             }
@@ -25,7 +40,7 @@ const Recipe = ({recipe}) => {
                <h2>Ingredients:</h2>
                {recipe.ingredients.map(item => (
                   <div className='recipe__item'>
-                  <img src={item.image?item.image:img_not_img}/>
+                  <img src={item.image?item.image:notImage}/>
                   <div key={item.text}> <span>{item.text}, weight:</span>{item.weight.toFixed(1)} gram</div>
                   </div>)
                )}
@@ -33,16 +48,16 @@ const Recipe = ({recipe}) => {
                
             }
             {
-               showColories ? <div className='button__container'><button className='recipe__button' 
-               onClick={() => {setShowColories(false); setShowIngredients(false) }}>Close</button></div> :
-               <div className='button__container'><button className='recipe__button' 
-               onClick={() => {setShowColories(true); setShowIngredients(false) }}>Show colories</button></div>
+               showColories ? <div   className='button__container'><button className='recipe__button' 
+               onClick={() => {setShowColories(false) }}>Close colories</button></div> :
+               <div   className='button__container'><button className='recipe__button' 
+               onClick={() => {setShowColories(true); }}>Show colories</button></div>
             }
             {
-               showIngredients ? <div className='button__container'><button className='recipe__button' 
-               onClick={() => {setShowIngredients(false); setShowColories(false)}}>Close</button></div> :
-               <div className='button__container'><button className='recipe__button' 
-               onClick={() => {setShowIngredients(true); setShowColories(false)}}>Show ingredients</button></div>
+               showIngredients ? <div  className='button__container'><button className='recipe__button' 
+               onClick={() => {setShowIngredients(false); }}>Close ingredients</button></div> :
+               <div   className='button__container'><button className='recipe__button' 
+               onClick={() => {setShowIngredients(true); }}>Show ingredients</button></div>
             }
          </div>
       </div>

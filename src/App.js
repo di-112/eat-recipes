@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './scss/App.scss';
 import * as axios from 'axios'
-import Recipe from './components/recipe';
+import RecipesSlider from './components/slider';
 
 const API_KEY = 'e58fb8988ab9d94df69a34ae0e3a1bef'
 
@@ -11,12 +11,11 @@ const App = () => {
   
   const [recipes, setRecipes] = useState([])
   const [search, setSearch] = useState('')
-  const [query, setQuery] = useState('chicken')
+  const [query, setQuery] = useState('potato')
 
   useEffect(()=>{
     axios.get(`https://api.edamam.com/search?q=${query}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=20&calories=591-722&health=alcohol-free`)
     .then(response=>{
-      console.log(response)
       setRecipes(response.data.hits.map(hit=>hit.recipe))
     })
   },[query])
@@ -39,10 +38,11 @@ const App = () => {
         <button type='submit'>Search</button>  
       </form>
       <div className="recipes">
-      {recipes.map(recipe => <Recipe recipe={recipe} key={recipe.label}/>)}
+        <RecipesSlider recipes={recipes}/>
       </div>
     </div>
   );
 }
+
 
 export default App;

@@ -1,6 +1,6 @@
 {
   "name": "eat-recipes",
-  "homepage": "http://di-112.github.io/recipes",
+  "homepage": "http://di-112.github.io/eat-recipes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +11,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "react-slick": "^0.28.0",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
