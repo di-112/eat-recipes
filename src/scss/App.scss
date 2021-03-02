@@ -3,15 +3,12 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-$backgrd: 'https://st8.cannypic.com/thumbs/38/380787_632_canny_pic.jpg';
-
 .App{
   min-height: 100vh;
   padding: 20px;
   @media (max-width: 500px) {
     padding: 10px;
   }
-  //background: url($backgrd);
   background: #CEDBEE;
   background: -webkit-linear-gradient(top left, #CEDBEE, #4F03CD);
   background: -moz-linear-gradient(top left, #CEDBEE, #4F03CD);
@@ -51,7 +48,11 @@ form{
 }
 
 .recipes{
-  flex: 1 1 auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,9 +65,7 @@ form{
     & .slick-slide{
       display: flex;
       justify-content: center;
-      @media (max-width:480px) {
-        transform: scale(0.8);
-      }
+      align-items: center;
     }
     & .slick-arrow{
      position: absolute;
@@ -79,18 +78,17 @@ form{
   padding: 20px;
   text-align: center;
   width: 350px;
-  min-height: 550px;
   overflow-y: auto;
   @media (max-width: 500px) {
-    width: 300px;
+    width: 240px;
     padding: 20px 10px;
-    & img {width: 280px;}
+    & img {width: 230px;}
   }
   border-radius: 25px;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: start;
   align-items: center;
   & .recipe__colories{
     margin-bottom: 20px;
@@ -100,12 +98,17 @@ form{
     @include adaptiv-font(22,18);
     font-weight: bold; 
     margin-bottom: 20px;
+    min-height: 50px;
   }
   & .recipe__info{
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    max-width: 300px;
+    @media (max-width: 950px) {
+      justify-content: center;
+    }
   }
   & .recipe__button{
     padding: 10px 20px;
@@ -115,9 +118,10 @@ form{
     margin-bottom: 5px;
   }
   & .recipe__img{
-    margin-bottom: 20px;
     border-radius: 100px;
+    vertical-align: auto;
     box-shadow: 0 0 20px black;
+    margin: 0 auto 20px;
   }   
   & .recipe__composition{ 
     margin-bottom: 20px;
